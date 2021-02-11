@@ -11,5 +11,5 @@
         "PREFIX_FOR_FILENAMES_CLI": "myvstplug",
         "VENDOR_NAMESPACE_CLI": "VendorNamespace",
         "PLUGIN_CLASS_NAME_CLI": "MyVSTPlug",
-        "ENABLE_VSTGUI_SUPPORT_CLI": ["ON", "OFF"],
+        "ENABLE_VSTGUI_SUPPORT_CLI": ["ON", "OFF"]
 }
