@@ -1,0 +1,17 @@
+{
+        "VST3_SDK_PATH": "./VST3_SDK",
+        "PLUGIN_NAME_CLI": "MyVSTPlug",
+        "PLUGIN_CATEGORY_CLI": ["Fx", "Instrument"],
+        "CMAKE_PROJECT_NAME_CLI": "MyVSTPlug",
+        "PLUGIN_BUNDLE_NAME_CLI": "MyVSTPlug",
+        "PLUGIN_IDENTIFIER_CLI": "com.company.myvstplug",
+        "VENDOR_NAME_CLI": "VendorName",
+        "VENDOR_HOMEPAGE_CLI": "https://example.com",
+        "VENDOR_EMAIL_CLI": "email@example.com",
+        "PREFIX_FOR_FILENAMES_CLI": "myvstplug",
+        "VENDOR_NAMESPACE_CLI": "VendorNamespace",
+        "PLUGIN_CLASS_NAME_CLI": "MyVSTPlug",
+        "ENABLE_VSTGUI_SUPPORT_CLI": ["ON", "OFF"],
+
+        "_extensions": ["uuid_extension.UUIDExtension"]
+}
