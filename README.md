@@ -67,7 +67,7 @@ This generation process is realized by jinja2 extension, so you have to set `PYT
 
 ```sh
 $ git clone https://github.com/wrist/vst3_plugin_cookiecutter.git
-$ git checkout uuid
+$ git checkout origin/uuid
 $ export PYTHONPATH="${PYTHONPATH}:./vst3_plugin_cookiecutter/extensions"
 $ cookiecutter vst3_plugin_cookiecutter
 ...
