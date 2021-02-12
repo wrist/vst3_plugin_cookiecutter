@@ -58,7 +58,7 @@ $ mkdir build
 $ cd build
 $ cmake .. -G "Visual Studio 16 2019" -A "x64" # for Windows
 $ cmake .. -G "Xcode"  # for MacOS
-$ cmake .. -G "Ninja"  # for Linux
+$ cmake .. -DCMAKE_BUILD_TYPE=Debug -G "Ninja"  # for Linux, using Ninja build
 $ cmake --build . --config debug  # or release
 ```
 
@@ -78,8 +78,20 @@ $ mkdir build
 $ cd build
 $ cmake .. -G "Visual Studio 16 2019" -A "x64" # for Windows
 $ cmake .. -G "Xcode"  # for MacOS
-$ cmake .. -G "Ninja"  # for Linux
+$ cmake .. -DCMAKE_BUILD_TYPE=Debug -G "Ninja"  # for Linux, using Ninja build
 $ cmake --build . --config debug  # or release
+```
+
+### Apt packages on `Ubuntu 20.04`
+
+Below apt packages are required to build a plugin on `Ubuntu 20.04.02 LTS`.
+
+```sh
+$ sudo apt install build-essential
+$ sudo apt install ninja-build  # in case of building using Ninja
+$ sudo apt install libx11-dev libfreetype6-dev pkg-config libgtk-3-dev libgtkmm-3.0-dev
+$ sudo apt install libxcb-util-dev libxcb-cursor-dev libxcb-keysyms1-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev
+$ sudo apt install libjack-jack2-dev  # if you need jack support
 ```
 
 ## How to create jinja2 template from cmake files in VST3 SDK
