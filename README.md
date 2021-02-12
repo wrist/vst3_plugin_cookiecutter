@@ -34,17 +34,17 @@ Choose from 1, 2 [1]:
 $ cd MyVSTPlug
 ```
 
-But if you create a project in this way, you have to generate two uuid and replace the processor's and the controller's uids in `source/myvstplugcids.h` manually.
+But if you create a project in this way, you have to generate two uuids and replace the processor's and the controller's uids in `source/myvstplugcids.h` manually.
 
 ```sh
-$ uuidgen  # please execute in your terminal, below string is just a example and it's hex values in fact.
+$ uuidgen  # please execute in your terminal, the below string is just an example instead of generated hex values.
 XXXXXXXX-YYYY-YYYY-ZZZZ-ZZZZWWWWWWWW
 $ uuidgen
 AAAAAAAA-BBBB-BBBB-CCCC-CCCCDDDDDDDD
 $ vim source/myvstplugcids.h
 ```
 
-And put generated uuids to below argument as hex values.
+And put generated uuids to the below function's arguments as hex values.
 
 ```cpp
 static const Steinberg::FUID kMyVSTPlugProcessorUID (0xXXXXXXXX,0xYYYYYYYY,0xZZZZZZZZ,0xWWWWWWWW);
@@ -82,7 +82,7 @@ $ cmake .. -DCMAKE_BUILD_TYPE=Debug -G "Ninja"  # for Linux, using Ninja build
 $ cmake --build . --config debug  # or release
 ```
 
-### Apt packages on `Ubuntu 20.04`
+### Apt packages required to build a plugin on `Ubuntu 20.04`
 
 Below apt packages are required to build a plugin on `Ubuntu 20.04.02 LTS`.
 
@@ -103,7 +103,7 @@ $ wget https://download.steinberg.net/sdk_downloads/vst-sdk_3.7.1_build-50_2020-
 $ unzip vst-sdk_3.7.1_build-50_2020-11-17.zip
 ```
 
-2. Replace `@~@` symbols (which are used by `configure_file` of cmake) to jinja2 template using below script
+2. Replace `@~@` symbols (which are used by `configure_file` of cmake) to jinja2 template using the below script
 
 
 ```sh
@@ -153,7 +153,7 @@ ${cmake} ${cmake_script} \
 
 ## License of original VST3 Project Generator
 
-Original VST3 Project Generator is distributed with below BSD-3-clause license.
+Original VST3 Project Generator is distributed with the below BSD-3-clause license.
 
 ```
 //-----------------------------------------------------------------------------
