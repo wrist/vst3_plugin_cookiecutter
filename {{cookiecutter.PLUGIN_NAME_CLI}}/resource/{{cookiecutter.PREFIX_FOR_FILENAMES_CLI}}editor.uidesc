@@ -4,7 +4,21 @@
 	</fonts>
 	<colors>
 	</colors>
-	<template background-color="~ BlackCColor" background-color-draw-style="filled and stroked" class="CViewContainer" mouse-enabled="true" name="view" opacity="1" origin="0, 0" size="300, 300" transparent="false" wants-focus="false"/>
+        <template background-color="~ BlackCColor" background-color-draw-style="filled and stroked" class="CViewContainer" mouse-enabled="true" name="view" opacity="1" origin="0, 0" size="{{cookiecutter.settings.window.width}}, {{cookiecutter.settings.window.height}}" transparent="false" wants-focus="false">
+                {% for param in cookiecutter.settings.params %}
+                    {%- set num = param.num | int -%}
+                    {%- for nth in range(num) -%}
+                        {%- set control_id = loop.index0 -%}
+                        {% for ui in param.ui %}
+                            {%- set x = ui.x | int -%}
+                            {%- set dx = ui.dx | int -%}
+                            {%- set y = ui.y | int -%}
+                            {%- set dy = ui.dy | int -%}
+                <view class="{{ui.type}}" control-tag="{{param.name}}{{control_id}}" origin="{{x + nth * dx}}, {{y + nth * dy}}" title="{{ui.title}}" size="{{ui.width}}, {{ui.height}}" />
+                        {% endfor %}
+                    {%- endfor -%}
+                {% endfor %}
+        </template>
 	<custom>
 		<attributes name="FocusDrawing"/>
 		<attributes Path="/Users/wrist/work/vst/plugin/cookiecutter/{{cookiecutter.PLUGIN_BUNDLE_NAME_CLI}}/resource/{{cookiecutter.PREFIX_FOR_FILENAMES_CLI}}editor.uidesc" name="VST3Editor"/>

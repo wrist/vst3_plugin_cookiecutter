@@ -13,5 +13,70 @@
         "PLUGIN_CLASS_NAME_CLI": "{{ cookiecutter.PLUGIN_NAME_CLI }}",
         "ENABLE_VSTGUI_SUPPORT_CLI": ["ON", "OFF"],
 
+        "settings": {
+                "general": {
+                        "input_description": "Stereo In",
+                        "input_channel_num": 2,
+                        "output_description": "Stereo Out",
+                        "output_channel_num": 2
+                },
+                "window": {
+                        "width": 400,
+                        "height": 400
+                },
+                "statics": [
+                        {
+                                "num": 2,
+                                "name": "channel",
+                                "ui": [{
+                                        "type": "CTextLabel",
+                                        "title": "ch",
+                                        "width": 50,
+                                        "height": 20,
+                                        "x": 20,
+                                        "y": 20,
+                                        "dx": 100,
+                                        "dy": 100
+                                }]
+                        }
+                ],
+                "params": [
+                        {
+                                "num": 2,
+                                "name": "gain",
+                                "id_offset": 100,
+                                "controller_min": -60.0,
+                                "controller_max": 20.0,
+                                "controller_default": 0.0,
+                                "processor_min": 0.001,
+                                "processor_max": 10.0,
+                                "precision": 3,
+                                "ui": [
+                                        {
+                                                "type": "CTextEdit",
+                                                "title": "[dB]",
+                                                "width": 50,
+                                                "height": 20,
+                                                "x": 50,
+                                                "y": 50,
+                                                "dx": 100,
+                                                "dy": 100
+                                        },
+                                        {
+                                                "type": "CKnob",
+                                                "title": "[dB]",
+                                                "width": 50,
+                                                "height": 20,
+                                                "x": 50,
+                                                "y": 50,
+                                                "dx": 100,
+                                                "dy": 100
+                                        }
+                                ]
+                        }
+                ]
+        },
+
+
         "_extensions": ["uuid_extension.UUIDExtension"]
 }
