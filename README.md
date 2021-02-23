@@ -65,6 +65,18 @@ $ cmake --build . --config debug  # or release
 Note that `-DSMTG_CREATE_PLUGIN_LINK=OFF` option for Windows disables automatic linking to `C:\Program FIles\Common FIles\VST3` for built plugin.
 Because Windows requires administrator privileges to do the linking, so you have to build the plugin under privileged terminal without `-DSMTG_CREATE_PLUGIN_LINK=OFF`.
 
+
+If you failed to indicate the VST SDK PATH in interactive process of cookiecutter correctly,
+you can modify the SDK PATH in `CMakeLists.txt` contained in top level directory to success the building.
+
+
+```cmake
+set(vst3sdk_SOURCE_DIR {{cookiecutter.VST3_SDK_PATH}})  # modify this right hand value
+if(NOT vst3sdk_SOURCE_DIR)
+    message(FATAL_ERROR "Path to VST3 SDK is empty!")
+endif()
+```
+
 ### Create a project from local repository cloned from github
 
 If you clone this repository to local, you can automate the uuid generation process described above.
