@@ -56,10 +56,25 @@ After that, you can build the project using cmake like below.
 ```sh
 $ mkdir build
 $ cd build
-$ cmake .. -G "Visual Studio 16 2019" -A "x64" # for Windows
+$ cmake .. -G "Visual Studio 16 2019" -A "x64" -DSMTG_CREATE_PLUGIN_LINK=OFF # for Windows
 $ cmake .. -G "Xcode"  # for MacOS
 $ cmake .. -DCMAKE_BUILD_TYPE=Debug -G "Ninja"  # for Linux, using Ninja build
 $ cmake --build . --config debug  # or release
+```
+
+Note that `-DSMTG_CREATE_PLUGIN_LINK=OFF` option for Windows disables automatic linking to `C:\Program FIles\Common FIles\VST3` for built plugin.
+Because Windows requires administrator privileges to do the linking, so you have to build the plugin under privileged terminal without `-DSMTG_CREATE_PLUGIN_LINK=OFF`.
+
+
+If you failed to indicate the VST SDK PATH in interactive process of cookiecutter correctly,
+you can modify the SDK PATH in `CMakeLists.txt` contained in top level directory to success the building.
+
+
+```cmake
+set(vst3sdk_SOURCE_DIR {{cookiecutter.VST3_SDK_PATH}})  # modify this right hand value
+if(NOT vst3sdk_SOURCE_DIR)
+    message(FATAL_ERROR "Path to VST3 SDK is empty!")
+endif()
 ```
 
 ### Create a project from local repository cloned from github
@@ -76,7 +91,7 @@ $ cookiecutter vst3_plugin_cookiecutter
 $ cd MyVSTPlug
 $ mkdir build
 $ cd build
-$ cmake .. -G "Visual Studio 16 2019" -A "x64" # for Windows
+$ cmake .. -G "Visual Studio 16 2019" -A "x64" -DSMTG_CREATE_PLUGIN_LINK=OFF # for Windows
 $ cmake .. -G "Xcode"  # for MacOS
 $ cmake .. -DCMAKE_BUILD_TYPE=Debug -G "Ninja"  # for Linux, using Ninja build
 $ cmake --build . --config debug  # or release
