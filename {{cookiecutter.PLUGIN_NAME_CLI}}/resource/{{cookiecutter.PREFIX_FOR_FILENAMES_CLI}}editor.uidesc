@@ -13,7 +13,7 @@
                             {%- set dx = ui.dx | int -%}
                             {%- set y = ui.y | int -%}
                             {%- set dy = ui.dy | int -%}
-                <view class="{{ui.type}}" control-tag="{{param.name}}{{nth}}" origin="{{x + nth * dx}}, {{y + nth * dy}}" title="{{ui.title}}" size="{{ui.width}}, {{ui.height}}" />
+                <view class="{{ui.type}}" control-tag="{{param.name}}{{nth}}" origin="{{x + nth * dx}}, {{y + nth * dy}}" title="{{param.title}}" size="{{ui.width}}, {{ui.height}}" />
                         {% endfor %}
                     {%- endfor %}
                 {%- endfor %}

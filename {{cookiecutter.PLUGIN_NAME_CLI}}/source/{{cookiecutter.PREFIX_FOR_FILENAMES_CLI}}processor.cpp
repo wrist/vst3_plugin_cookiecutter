@@ -38,8 +38,8 @@ tresult PLUGIN_API {{cookiecutter.PLUGIN_CLASS_NAME_CLI}}Processor::initialize (
 	}
 
 	//--- create Audio IO ------
-	addAudioInput (STR16 ("Stereo In"), Steinberg::Vst::SpeakerArr::kStereo);
-	addAudioOutput (STR16 ("Stereo Out"), Steinberg::Vst::SpeakerArr::kStereo);
+	addAudioInput (STR16 ("{{cookiecutter.settings.general.input_description}}"), Steinberg::Vst::SpeakerArr::kStereo);
+	addAudioOutput (STR16 ("{{cookiecutter.settings.general.output_description}}"), Steinberg::Vst::SpeakerArr::kStereo);
 
 	/* If you don't need an event bus, you can remove the next line */
 	addEventInput (STR16 ("Event In"), 1);

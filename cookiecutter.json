@@ -45,6 +45,8 @@
                                 "num": 2,
                                 "name": "gain",
                                 "id_offset": 100,
+                                "type": "range",
+                                "title": "[dB]",
                                 "controller_min": -60.0,
                                 "controller_max": 20.0,
                                 "controller_default": 0.0,
@@ -54,22 +56,78 @@
                                 "ui": [
                                         {
                                                 "type": "CTextEdit",
-                                                "title": "[dB]",
                                                 "width": 50,
                                                 "height": 20,
-                                                "x": 50,
+                                                "x": 0,
                                                 "y": 50,
                                                 "dx": 100,
                                                 "dy": 0
                                         },
                                         {
                                                 "type": "CKnob",
-                                                "title": "[dB]",
                                                 "width": 50,
                                                 "height": 50,
-                                                "x": 50,
+                                                "x": 0,
                                                 "y": 100,
                                                 "dx": 100,
+                                                "dy": 0
+                                        }
+                                ]
+                        },
+                        {
+                                "num": 2,
+                                "name": "pan",
+                                "id_offset": 200,
+                                "type": "range",
+                                "title": "",
+                                "controller_min": -1.0,
+                                "controller_max": 1.0,
+                                "controller_default": 0.0,
+                                "processor_min": -1.0,
+                                "processor_max": 1.0,
+                                "precision": 3,
+                                "ui": [
+                                        {
+                                                "type": "CTextEdit",
+                                                "width": 50,
+                                                "height": 20,
+                                                "x": 200,
+                                                "y": 50,
+                                                "dx": 100,
+                                                "dy": 0
+                                        },
+                                        {
+                                                "type": "CKnob",
+                                                "width": 50,
+                                                "height": 50,
+                                                "x": 200,
+                                                "y": 100,
+                                                "dx": 100,
+                                                "dy": 0
+                                        }
+                                ]
+                        },
+                        {
+                                "num": 1,
+                                "name": "switch",
+                                "id_offset": 300,
+                                "type": "step",
+                                "options": ["monoral", "stereo", "mute"],
+                                "title": "",
+                                "controller_min": 0.0,
+                                "controller_max": 1.0,
+                                "controller_default": 1.0,
+                                "processor_min": 0.0,
+                                "processor_max": 1.0,
+                                "precision": 1,
+                                "ui": [
+                                        {
+                                                "type": "COptionMenu",
+                                                "width": 50,
+                                                "height": 20,
+                                                "x": 0,
+                                                "y": 200,
+                                                "dx": 0,
                                                 "dy": 0
                                         }
                                 ]
