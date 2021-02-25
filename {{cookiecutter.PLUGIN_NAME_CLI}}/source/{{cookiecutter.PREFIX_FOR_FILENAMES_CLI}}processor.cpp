@@ -6,7 +6,6 @@
 #include "{{cookiecutter.PREFIX_FOR_FILENAMES_CLI}}cids.h"
 
 #include "base/source/fstreamer.h"
-#include "pluginterfaces/vst/ivstparameterchanges.h"
 
 using namespace Steinberg;
 
@@ -63,27 +62,44 @@ tresult PLUGIN_API {{cookiecutter.PLUGIN_CLASS_NAME_CLI}}Processor::setActive (T
 	return AudioEffect::setActive (state);
 }
 
+void {{cookiecutter.PLUGIN_CLASS_NAME_CLI}}Processor::onInputParameterChanged(Vst::IParamValueQueue* paramQueue){
+  Vst::ParamValue value;
+  int32 sampleOffset;
+  int32 numPoints = paramQueue->getPointCount ();
+  auto param_id = paramQueue->getParameterId ();
+
+  switch (param_id)
+  {
+    case kBypass:
+      mBypass = value == 0 ? true : false;
+      break;
+{%- for param in cookiecutter.settings.params %}
+    {%- set num = param.num | int -%}
+    {%- for nth in range(num) %}
+    case k{{param.name}}{{nth}}:
+      m{{param.name}}[{{nth}}] = value;
+      break;
+    {%- endfor -%}
+{%- endfor %}
+    default:
+      break;
+  }
+}
+
 //------------------------------------------------------------------------
 tresult PLUGIN_API {{cookiecutter.PLUGIN_CLASS_NAME_CLI}}Processor::process (Vst::ProcessData& data)
 {
 	//--- First : Read inputs parameter changes-----------
 
-    /*if (data.inputParameterChanges)
+    if (data.inputParameterChanges)
     {
         int32 numParamsChanged = data.inputParameterChanges->getParameterCount ();
         for (int32 index = 0; index < numParamsChanged; index++)
         {
-            if (auto* paramQueue = data.inputParameterChanges->getParameterData (index))
-            {
-                Vst::ParamValue value;
-                int32 sampleOffset;
-                int32 numPoints = paramQueue->getPointCount ();
-                switch (paramQueue->getParameterId ())
-                {
-				}
-			}
+            auto* paramQueue = data.inputParameterChanges->getParameterData (index);
+            if (paramQueue) { onInputParameterChanged(paramQueue); }
 		}
-	}*/
+	}
 	
 	//--- Here you have to implement your processing
 

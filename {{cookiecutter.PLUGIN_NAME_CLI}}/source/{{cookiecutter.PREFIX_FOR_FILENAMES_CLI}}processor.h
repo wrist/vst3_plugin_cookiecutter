@@ -5,6 +5,8 @@
 #pragma once
 
 #include "public.sdk/source/vst/vstaudioeffect.h"
+#include "pluginterfaces/vst/ivstparameterchanges.h"
+#include "{{cookiecutter.PREFIX_FOR_FILENAMES_CLI}}cids.h"
 
 namespace {{cookiecutter.VENDOR_NAMESPACE_CLI}} {
 
@@ -50,6 +52,18 @@ public:
 
 //------------------------------------------------------------------------
 protected:
+
+  bool mBypass;
+
+{%- for param in cookiecutter.settings.params %}
+  {% if param.type == "range" %}
+  float m{{param.name}}[k{{param.name}}ParamNum];
+  {% elif param.type == "step" %}
+  int m{{param.name}}[k{{param.name}}ParamNum];
+  {% endif %}
+{%- endfor -%}
+
+void onInputParameterChanged(Steinberg::Vst::IParamValueQueue* paramQueue);
 
 };
 
